@@ -27,7 +27,6 @@ namespace CIS3285_FinalProject
             this.id = id;
             this.name = name;
             this.Amount = amount;
-            this.dateAddedToList = dateAddedToList;
             this.puchasedYN = puchasedYN;
         }
 
@@ -48,7 +47,7 @@ namespace CIS3285_FinalProject
             puchasedYN = true;
         }
         
-        public string ToString()
+        public override string ToString()
         {
             return getDescription();
         }
