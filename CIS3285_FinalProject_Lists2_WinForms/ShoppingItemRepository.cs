@@ -11,7 +11,15 @@ namespace CIS3285_FinalProject
     {
         // DEBT --- connection string should not be hard coded here
         string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\FinalProjLists.mdf;Integrated Security=True;Connect Timeout=30;";
-        public void createItem(ShoppingItem item)
+
+        public IListItem CreateShoppingItem(string name, int amount)
+        {
+            ShoppingItem newShopping = new ShoppingItem(name, amount);
+            saveItem(newShopping);
+            return newShopping;
+        }
+
+        public void saveItem(ShoppingItem item)
         {
             using (var connection = new SqlConnection(connectionString)) 
             {
@@ -31,9 +39,9 @@ namespace CIS3285_FinalProject
             }
         }
 
-        public List<ShoppingItem> ReadAll()
+        public List<IListItem> ReadAll()
         {
-            List<ShoppingItem> items = new List<ShoppingItem>();
+            List<IListItem> items = new List<IListItem>();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();

@@ -8,25 +8,25 @@ namespace CIS3285_FinalProject
 {
     class ToDoListController
     {
-        private ToDoList toDoList;
+        private ItemList toDoList;
         private ToDoItemRepository itemDbRepository;
 
         public ToDoListController()
         {
             // Read the initial list from the database repository
             itemDbRepository = new ToDoItemRepository();
-            toDoList = new ToDoList(itemDbRepository.ReadAll());
+            toDoList = new ItemList(itemDbRepository.ReadAll());
         }
         public void CreateToDoItem(string Activity)
         {
             ToDoItem newItem = new ToDoItem(Activity);
             toDoList.AddItem(newItem);
-            itemDbRepository.createItem(newItem);
+            //itemDbRepository.createItem(newItem);
         }
 
         public IEnumerable<IListItem> GetListItems()
         {
-            return toDoList.GetItems();
+            return toDoList.GetUnChecked();
         }
 
         public void MarkItemAsChecked(IListItem item)

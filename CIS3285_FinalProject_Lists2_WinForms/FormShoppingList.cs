@@ -13,6 +13,7 @@ namespace CIS3285_FinalProject
     public partial class FormShoppingList : Form
     {
         ListController listController;
+        ShoppingItemRepository shoppingRepo;
         FormToDoList formToDo;
 
         public FormShoppingList()
@@ -20,7 +21,8 @@ namespace CIS3285_FinalProject
             InitializeComponent();
             formToDo = new FormToDoList();
             formToDo.setParentForm(this);
-            listController = new ListController();
+            shoppingRepo = new ShoppingItemRepository();
+            listController = new ListController(shoppingRepo);
             updateListBox();
         }
 
@@ -28,7 +30,8 @@ namespace CIS3285_FinalProject
         {
             string name = textBoxItemName.Text.ToString();
             int amount = Int32.Parse(textBoxItemAmount.Text);
-            listController.CreateshoppingItem(name, amount);
+            IListItem newItem = shoppingRepo.CreateShoppingItem(name, amount);
+            listController.AddItem(newItem);
 
             updateListBox();
 

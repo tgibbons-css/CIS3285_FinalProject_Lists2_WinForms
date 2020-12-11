@@ -80,10 +80,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShoppingItem.cs" />
     <Compile Include="ShoppingItemRepository.cs" />
-    <Compile Include="ShoppingList.cs" />
+    <Compile Include="ItemList.cs" />
     <Compile Include="ToDoItem.cs" />
     <Compile Include="ToDoItemRepository.cs" />
-    <Compile Include="ToDoList.cs" />
     <Compile Include="ToDoListController.cs" />
     <EmbeddedResource Include="FormShoppingList.resx">
       <DependentUpon>FormShoppingList.cs</DependentUpon>

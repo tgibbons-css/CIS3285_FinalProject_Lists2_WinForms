@@ -8,11 +8,20 @@ using System.Data;
 
 namespace CIS3285_FinalProject
 {
-    class ToDoItemRepository 
+    class ToDoItemRepository : IListRepository
     {
         // DEBT --- connection string should not be hard coded here
         string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\FinalProjLists.mdf;Integrated Security=True;Connect Timeout=30;";
-        public void createItem(ToDoItem item)
+
+        public IListItem CreateToDoItem(string name)
+        {
+            ToDoItem newToDo = new ToDoItem(name);
+            saveItem(newToDo);
+            return newToDo;
+        }
+
+
+        public void saveItem(ToDoItem item)
         {
             using (var connection = new SqlConnection(connectionString))
             {
@@ -31,9 +40,9 @@ namespace CIS3285_FinalProject
             }
         }
 
-        public List<ToDoItem> ReadAll()
+        public List<IListItem> ReadAll()
         {
-            List<ToDoItem> items = new List<ToDoItem>();
+            List<IListItem> items = new List<IListItem>();
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();

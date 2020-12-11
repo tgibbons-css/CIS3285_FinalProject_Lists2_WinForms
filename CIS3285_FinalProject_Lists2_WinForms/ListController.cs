@@ -11,30 +11,30 @@ namespace CIS3285_FinalProject
     /// </summary>
     class ListController
     {
-        private ShoppingList shoppingList;
-        private ShoppingItemRepository itemDbRepository;
+        private ItemList itemList;
+        private IListRepository itemDbRepository;
 
-        public ListController()
+        public ListController(IListRepository itemDbRepository)
         {
             // Read the initial list from the database repository
-            itemDbRepository = new ShoppingItemRepository();
-            shoppingList = new ShoppingList(itemDbRepository.ReadAll());
+            this.itemDbRepository = itemDbRepository;
+            
+            itemList = new ItemList(itemDbRepository.ReadAll());
         }
-        public void CreateshoppingItem(string Name, int amount)
+        public void AddItem(IListItem newItem)
         {
-            ShoppingItem newItem = new ShoppingItem(Name, amount);
-            shoppingList.AddItem(newItem);
-            itemDbRepository.createItem(newItem);
+            itemList.AddItem(newItem);
+            //itemDbRepository.createItem(newItem);
         }
 
         public IEnumerable<IListItem> GetListItems()
         {
-            return shoppingList.GetItems();
+            return itemList.GetAllItems();
         }
 
         public void MarkItemAsChecked(IListItem item)
         {
-            shoppingList.CheckItem(item);
+            itemList.CheckItem(item);
             ShoppingItem i = (ShoppingItem)item;
             itemDbRepository.updateChecked(item.Id);
         }

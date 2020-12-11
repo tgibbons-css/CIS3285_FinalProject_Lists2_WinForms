@@ -9,8 +9,8 @@ namespace CIS3285_FinalProject
     interface IListRepository
     {
 
-        void createItem(ShoppingItem item);
-        List<ShoppingItem> ReadAll();
+        //void createItem(IListItem item);
+        List<IListItem> ReadAll();
         void updateChecked(Guid id);
 
     }

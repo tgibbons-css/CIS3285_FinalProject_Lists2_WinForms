@@ -12,19 +12,22 @@ namespace CIS3285_FinalProject
 {
     public partial class FormToDoList : Form
     {
-        ToDoListController listController;
+        ListController listController;
+        ToDoItemRepository toDoRepo;
         FormShoppingList parentForm;
         public FormToDoList()
         {
             InitializeComponent();
-            listController = new ToDoListController();
+            toDoRepo = new ToDoItemRepository();
+            listController = new ListController(toDoRepo);
             updateListBox();
         }
 
         private void buttonAddToList_Click(object sender, EventArgs e)
         {
             string name = textBoxActivity.Text.ToString();
-            listController.CreateToDoItem(name);
+            IListItem newItem = toDoRepo.CreateToDoItem(name);
+            listController.AddItem(newItem);
 
             updateListBox();
         }
