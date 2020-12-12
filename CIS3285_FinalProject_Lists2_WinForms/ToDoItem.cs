@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CIS3285_FinalProject
 {
-    class ToDoItem : IListItem
+    public class ToDoItem : IListItem
     {
         Guid id;
         string activity;

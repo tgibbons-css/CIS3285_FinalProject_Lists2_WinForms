@@ -83,7 +83,6 @@
     <Compile Include="ItemList.cs" />
     <Compile Include="ToDoItem.cs" />
     <Compile Include="ToDoItemRepository.cs" />
-    <Compile Include="ToDoListController.cs" />
     <EmbeddedResource Include="FormShoppingList.resx">
       <DependentUpon>FormShoppingList.cs</DependentUpon>
     </EmbeddedResource>
