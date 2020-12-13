@@ -8,7 +8,7 @@ using System.Data;
 
 namespace CIS3285_FinalProject
 {
-    class ToDoItemRepository : IListRepository
+    public class ToDoItemRepository : IListRepository
     {
         // DEBT --- connection string should not be hard coded here
         string connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\FinalProjLists.mdf;Integrated Security=True;Connect Timeout=30;";
@@ -63,7 +63,7 @@ namespace CIS3285_FinalProject
             return items;
         }
 
-        public void updateChecked(Guid id)
+        public void UpdateChecked(Guid id)
         {
             using (var connection = new SqlConnection(connectionString))
             {

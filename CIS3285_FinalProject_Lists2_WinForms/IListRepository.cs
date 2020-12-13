@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace CIS3285_FinalProject
 {
-    interface IListRepository
+    public interface IListRepository
     {
 
         //void createItem(IListItem item);
         List<IListItem> ReadAll();
-        void updateChecked(Guid id);
+        void UpdateChecked(Guid id);
 
     }
 }

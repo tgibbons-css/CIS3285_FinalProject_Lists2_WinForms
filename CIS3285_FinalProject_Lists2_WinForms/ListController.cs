@@ -9,10 +9,10 @@ namespace CIS3285_FinalProject
     /// This should contain all the busness and control login for managing the list.
     /// It makes use of the ShoppingList to hold the actual list
     /// </summary>
-    class ListController
+    public class ListController
     {
-        private ItemList itemList;
-        private IListRepository itemDbRepository;
+        public ItemList itemList;
+        public IListRepository itemDbRepository;
 
         public ListController(IListRepository itemDbRepository)
         {
@@ -24,19 +24,17 @@ namespace CIS3285_FinalProject
         public void AddItem(IListItem newItem)
         {
             itemList.AddItem(newItem);
-            //itemDbRepository.createItem(newItem);
         }
 
         public IEnumerable<IListItem> GetListItems()
         {
-            return itemList.GetAllItems();
+            return itemList.GetUnChecked();
         }
 
         public void MarkItemAsChecked(IListItem item)
         {
             itemList.CheckItem(item);
-            ShoppingItem i = (ShoppingItem)item;
-            itemDbRepository.updateChecked(item.Id);
+            itemDbRepository.UpdateChecked(item.Id);
         }
     }
 }

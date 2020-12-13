@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CIS3285_FinalProject
 {
-    class ItemList
+    public class ItemList
     {
         List<IListItem> itemList;
 

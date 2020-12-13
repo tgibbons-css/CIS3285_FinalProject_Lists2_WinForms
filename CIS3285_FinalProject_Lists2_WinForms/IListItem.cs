@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CIS3285_FinalProject
 {
-    interface IListItem
+    public interface IListItem
     {
         bool IsChecked();
         void markChecked();
